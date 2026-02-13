@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 // Create DB
 const db = new sqlite3.Database("./notes.db");
-
+const PORT = process.env.PORT || 5000;
 // Create table if not exists
 db.run(`
   CREATE TABLE IF NOT EXISTS notes (
@@ -40,6 +40,6 @@ app.delete("/notes/:id", (req, res) => {
   });
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
